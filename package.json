@@ -1,0 +1,34 @@
+{
+  "name": "frontend",
+  "title": "Frontend Template",
+  "version": "1.0.0",
+  "description": "This is the frontend template project for a headless wordpress project.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "make watch-server; make watch-build",
+    "kill": "make kill-watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/work-shop/frontend.git"
+  },
+  "keywords": [
+
+  ],
+  "author": "Work-Shop (Greg Nemes, Nic Schumann, Raghda Maaliki)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/work-shop/frontend/issues"
+  },
+  "homepage": "https://github.com/work-shop/frontend#readme",
+  "dependencies": {
+    "argparse": "^1.0.7",
+    "express": "^4.14.0",
+    "jquery": "^3.0.0",
+    "swig": "^1.4.2",
+    "wordpress-rest-api": "^0.7.0"
+  },
+  "local_api": "https://cms.headless.workshopdesignstudio.org/wp-json",
+  "remote_api": "https://cms.headless.workshopdesignstudio.org/wp-json"
+}
