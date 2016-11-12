@@ -4,46 +4,75 @@
 
 {# ------------------------------------------------------- #}
 
-{% block definitions %}{% endblock %}
+{% block definitions %}
+    {% set social_title = '' %}
+    {% set social_description = '' %}
+    {% set url = '' %}
+{% endblock %}
 
 <!DOCTYPE html>
 <html class="no-js">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width">
 
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>{% block title %} {{ site_title }} {% endblock %}</title>
-    <meta name="description" content="{% block description %}{% endblock %}">
-    <meta name="viewport" content="width=device-width">
+        <title>{% block title %} {{ site_title }} {% endblock %}</title>
+        <meta name="description" content="{% block description %}{% endblock %}">
 
-    <link rel="shortcut icon" href="/static/images/favicon.ico">
-    <link rel="apple-touch-icon" href="/static/images/touch-icon.png">
+        <!-- Twitter Card data -->
+        <meta name="twitter:card" value="<?php bloginfo('description'); ?>">
 
-    <link rel="stylesheet" type="text/css" href="/static/bundle.css"/>
+        <!-- Open Graph data -->
+        <meta property="og:title" content="{{social_title}}" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="{{url}}" />
+        <meta property="og:image" content="" />
+        <meta property="og:description" content="{{social_description}}" />
 
-    {% block head_extra %}{% endblock %}
-  </head>
-  <body {% block body_attributes %}{% endblock %}>
-    {% block body %}
+        <link rel="shortcut icon" href="/static/images/favicon.ico">
+        <link rel="apple-touch-icon" href="/static/images/touch-icon.png">
 
-      {% include "ie.html" %}
-      {% include "header.html" %}
+        <link rel="stylesheet" type="text/css" href="/public/fonts/fonts.css"/>
+        <link rel="stylesheet" type="text/css" href="/public/bundle.css"/>
+        {% block head_extra %}{% endblock %}
+    </head>
+    <body  class="loading menu-closed modal-off before spy {% block body_classes %}{% endblock %} ">
 
-      <main id="content">{% block content %}{% endblock %}</main>
+        {% block body %}
 
-      {% include "footer.html" %}
+            {% include "ie.html" %}
+            {% include "header.html" %}
 
-      <script type="text/javascript" src="static/bundle.js"></script>
+            <main id="content">{% block content %}{% endblock %}</main>
 
-      {% if development %}
-        <script>
-          document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] +
-          ':35729/livereload.js?snipver=1"></' + 'script>')
-        </script>
-      {% endif %}
+            {% include "footer.html" %}
+            {% include "modals.html" %}            
 
-      {% block scripts_extra %}{% endblock %}
+            <script type="text/javascript" src="/public/bundle.js"></script>
 
-    {% endblock %}
-  </body>
+            {% if development %}
+            <script>
+              document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] +
+                ':35729/livereload.js?snipver=1"></' + 'script>')
+            </script>
+            {% endif %}
+
+            <!-- Google Analytics -->
+              <!--<script>
+                (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+                ga('create', 'UA-XXXXX-Y', 'auto');
+                ga('send', 'pageview');
+            </script>-->
+            <!-- End Google Analytics -->
+
+            {% block scripts_extra %}{% endblock %}
+
+        {% endblock %}
+
+    </body>
 </html>

@@ -1,0 +1,15 @@
+
+/* Sizing heights and widths with viewport units*/
+
+@for $i from 1 through 20 {
+  .vh#{$i*5}{ 
+  	height: 5vh * $i;
+  }
+}
+
+@for $i from 1 through 20 {
+  .vw#{$i*5}{
+  	width: 5% * $i; 
+  	//width: 9.99vw * $i; why did i do this?
+  }
+}

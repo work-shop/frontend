@@ -1,12 +1,11 @@
 {% extends 'partials/base.html' %}
 
+{% block definitions %} {% endblock %}
+{% block body_classes %} {% endblock %}
+
+
 {% block content %}
 
-<article>
-
-	<h1>{{ site_title }}</h1>
-    <p>{{ site_description }}</p>
-
-</article>
+  {% include "partials/home-content.html" %}
 
 {% endblock %}

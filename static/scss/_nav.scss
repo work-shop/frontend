@@ -1,0 +1,11 @@
+
+#nav{
+	height: $nav-height;
+	width: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background: $ultra-light;
+	padding-top: 25px;
+	border-bottom: 1px solid darken($ultra-light, 5%);
+}

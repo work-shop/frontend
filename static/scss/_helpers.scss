@@ -1,0 +1,22 @@
+
+/* Helpers and miscellaneous reusable styles */
+
+
+.block{
+	position: relative;
+	width: 100%;
+	display: block;
+	z-index: 1;
+}
+
+
+//style the unloaded and loaded states of the page
+.loading{
+	opacity: 0;
+	@include transition(opacity,.5s);
+}
+
+.loaded{
+	opacity: 1;
+}
+

@@ -1,34 +1,41 @@
 {
-  "name": "frontend",
-  "title": "Frontend Template",
+  "name": "dbvw.workshopdesignstudio.org",
+  "title": "DBVW Architects",
+  "project": "dbvw",
   "version": "1.0.0",
-  "description": "This is the frontend template project for a headless wordpress project.",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "git push live +master:refs/heads/master",
     "watch": "make watch-server; make watch-build",
     "kill": "make kill-watch"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/work-shop/frontend.git"
+    "url": "git+https://github.com/work-shop/dbvw.workshopdesignstudio.org.git"
   },
-  "keywords": [
-
-  ],
+  "keywords": [],
   "author": "Work-Shop (Greg Nemes, Nic Schumann, Raghda Maaliki)",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/work-shop/frontend/issues"
+    "url": "https://github.com/work-shop/dbvw.workshopdesignstudio.org/issues"
   },
-  "homepage": "https://github.com/work-shop/frontend#readme",
+  "homepage": "https://github.com/work-shop/dbvw.workshopdesignstudio.org#readme",
   "dependencies": {
     "argparse": "^1.0.7",
+    "bootstrap": "^4.0.0-alpha.5",
+    "bourbon": "^4.2.7",
     "express": "^4.14.0",
     "jquery": "^3.0.0",
+    "parse-json-response": "^1.0.1",
+    "slick-carousel": "^1.6.0",
     "swig": "^1.4.2",
-    "wordpress-rest-api": "^0.7.0"
+    "util-extend": "^1.0.3",
+    "wordpress-rest-api": "^0.7.0",
+    "wpapi": "^0.11.0"
   },
-  "local_api": "https://cms.headless.workshopdesignstudio.org/wp-json",
-  "remote_api": "https://cms.headless.workshopdesignstudio.org/wp-json"
+  "local_api": "http://localhost:8888/dbvw/wp-json",
+  "remote_api": "http://cms.dbvw.workshopdesignstudio.org/wp-json",
+  "frontend": {}
 }

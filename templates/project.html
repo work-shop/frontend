@@ -1,0 +1,20 @@
+{% extends 'partials/base.html' %}
+
+{% block definitions %} {% endblock %}
+{% block body_classes %} {% endblock %}
+
+
+{% block content %}
+
+<article>
+
+	<script>console.log({{ item|json|safe }})</script>
+
+    <h1>{{ item.title }}</h1>
+    <div>
+        {{ item.content|safe }}
+    </div>
+
+</article>
+
+{% endblock %}

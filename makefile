@@ -2,18 +2,19 @@
 # GLOBALLY DEFINED CONSTANTS (Defined Once, on a Per-Project Basis)
 # -------------------------------------------------------------
 
-PROJECT-NAME = frontend-template
-DOMAIN-NAME = headless.workshopdesignstudio.org
-PROJECT-IP = 45.55.43.76
+PROJECT-NAME = dbvw
+DOMAIN-NAME = dbvw.workshopdesignstudio.org
+PROJECT-IP= 45.55.43.76
 
 ROOT-DIRECTORY = ./
 TEMPLATE-DIRECTORY=templates/
 STATIC-DIRECTORY = static/
+PUBLIC-DIRECTORY = public/
 DYNAMIC-DIRECTORY = dynamic/
 JAVASCRIPT-SOURCE-DIRECTORY = $(STATIC-DIRECTORY)javascript/
 SCSS-SOURCE-DIRECTORY = $(STATIC-DIRECTORY)scss/
-JAVASCRIPT-TARGET-DIRECTORY = $(STATIC-DIRECTORY)
-SCSS-TARGET-DIRECTORY = $(STATIC-DIRECTORY)
+JAVASCRIPT-TARGET-DIRECTORY = $(PUBLIC-DIRECTORY)
+SCSS-TARGET-DIRECTORY = $(PUBLIC-DIRECTORY)
 
 JAVASCRIPT-SOURCE-MAIN = main.js
 JAVASCRIPT-TARGET-MAIN = bundle.js
@@ -38,6 +39,10 @@ scss-postcompilation-hook=cat
 
 all: build-client-js build-client-scss
 
+start: run-server watch-build
+
+stop: kill-build kill-server
+
 install-dependencies:
 	brew install fswatch
 	npm install -g browserify
@@ -51,15 +56,16 @@ build-client-js:
 	browserify $(JAVASCRIPT-SOURCE-DIRECTORY)$(JAVASCRIPT-SOURCE-MAIN) | $(javascript-postcompilation-hook) > $(JAVASCRIPT-TARGET-DIRECTORY)$(JAVASCRIPT-TARGET-MAIN)
 
 build-client-scss:
-	sass --scss --quiet $(SCSS-SOURCE-DIRECTORY)$(SCSS-SOURCE-MAIN) | $(scss-postcompilation-hook) > $(SCSS-TARGET-DIRECTORY)$(SCSS-TARGET-MAIN)
+	sass --scss $(SCSS-SOURCE-DIRECTORY)$(SCSS-SOURCE-MAIN) | $(scss-postcompilation-hook) > $(SCSS-TARGET-DIRECTORY)$(SCSS-TARGET-MAIN)
 
 watch-build:
 	fswatch -r -0 $(JAVASCRIPT-SOURCE-DIRECTORY) | xargs -0 -n 1 make build-client-js 1>/dev/null &
-	fswatch -r -0 $(SCSS-SOURCE-DIRECTORY) | xargs -0 -n 1 make build-client-scss 1>/dev/null &
-	livereload . &
+	sass --scss --watch $(SCSS-SOURCE-DIRECTORY)$(SCSS-SOURCE-MAIN):$(SCSS-TARGET-DIRECTORY)$(SCSS-TARGET-MAIN) &
+	livereload "./public, ./templates" -w 550 &
 
 kill-watch:
 	kill -9 $$(ps aux | grep -v grep | grep "fswatch" | awk '{print $$2}')
+	kill -9 $$(ps aux | grep -v grep | grep "sass" | awk '{print $$	2}')
 	kill -9 $$(ps aux | grep -v grep | grep "node /usr/local/bin/livereload" | awk '{print $$2}')
 
 run-server:
@@ -68,3 +74,6 @@ run-server:
 kill-server:
 	pm2 stop local-process.json
 	pm2 delete local-process.json
+
+clean:
+	rm -f logs/*

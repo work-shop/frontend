@@ -1,0 +1,94 @@
+
+body{
+	font-family: $font-main;
+	font-weight: normal;
+	@include text-size($text-regular);
+}
+
+//type sizes
+//default sizes include:
+//massive, huge, large, medium, regular, small
+
+h1{
+	@include text-size($text-massive);
+}
+
+h2{
+	@include text-size($text-huge);
+}
+
+h3{
+	@include text-size($text-large);
+}
+
+h4{
+	@include text-size($text-medium);
+}
+
+h5{
+	@include text-size($text-regular);
+}
+
+h6{
+	@include text-size($text-small);
+}
+
+p{
+	@include text-size($text-regular);
+}
+
+//typography colors
+
+.brand{
+	color: $brand;
+}
+
+.white{
+	color: white;
+}
+
+.ultra-light{
+	color: $ultra-light;
+}
+
+.light{
+	color: $light;
+}
+
+.medium{
+	color: $medium;
+}
+
+.dark{
+	color: $dark;
+}
+
+
+//formatting
+
+.uppercase{
+	text-transform: uppercase;
+}
+
+.underline{
+	text-decoration: underline;
+}
+
+
+//icons
+
+.icon{
+	&:before {
+		content: attr(data-icon);
+		font-family: 'modern_pictograms_proregular';
+		font-size: 24px;
+		line-height: 100%;
+		vertical-align: middle;
+		position: relative;	
+	}
+
+	&.large:before{
+		font-size: 72px;
+	}
+}
+

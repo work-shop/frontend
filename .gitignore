@@ -28,11 +28,12 @@ coverage
 build/Release
 
 # Dependency directories
+.sass-cache
 node_modules
 jspm_packages
 static/scss/bourbon
 static/scss/neat
-static/bundle.*
+public/
 
 # Optional npm cache directory
 .npm

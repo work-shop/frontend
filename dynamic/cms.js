@@ -1,11 +1,12 @@
 "use strict";
 
-var WP = require('wordpress-rest-api');
+var WP = require('wpapi');
 
-module.exports = function( options ) {
+module.exports = function( schema, options ) {
 
-	var wp = new WP({ endpoint: options.api });
-
-	return wp;
+	return new WP({
+        endpoint: options.remote_api,
+        routes: schema.routes
+    });
 
 };

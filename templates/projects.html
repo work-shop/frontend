@@ -1,0 +1,34 @@
+{% extends 'partials/base.html' %}
+
+{% block definitions %} {% endblock %}
+{% block body_classes %} {% endblock %}
+
+
+{% block content %}
+
+<section class="projects">
+
+	{% for project in projects %}
+
+        <script type=""></script>
+
+        <div data-async data-item-type="{{ project.type }}" data-item-id="{{ project.id }}" id="{{ project.slug }}" class="project">
+        <a href="{{ project.link }}">
+
+            <h2 class="project-title">{{ project.title }}</h2>
+            <h3>{{ project.services }}</h3>
+
+            {% for image in project.gallery %}
+
+                <img src="{{ image.url }}" />
+
+            {% endfor %}
+
+        </a>
+        </div>
+
+    {% endfor %}
+
+</section>
+
+{% endblock %}

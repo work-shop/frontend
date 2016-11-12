@@ -1,4 +1,35 @@
-@import 'bourbon/bourbon';
-@import 'neat/neat';
 
-@import '_variables';
+//libraries
+@import "bootstrap/bootstrap-grid";
+@import "bourbon/bourbon";
+@import "slick/slick";
+
+
+//utilities
+@import "variables";
+@import "reset";
+@import "sizing";
+@import "margins-and-padding";
+@import "backgrounds";
+@import "modals";
+@import "helpers";
+@import "general";
+
+
+//typography
+@import "type-sizes";
+@import "type-size-mixin/type-size__mixin";
+@import "typography";
+
+
+//site components
+@import "nav";
+@import "footer";
+
+
+//pages
+@import "home";
+@import "about";
+
+
+
