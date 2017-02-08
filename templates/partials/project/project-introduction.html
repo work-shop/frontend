@@ -1,0 +1,45 @@
+
+<section class="block pt3 pb0" id="project-introduction">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-sm-5 col-lg-5">
+				<h3 class="project-introduction-description">
+					{{ item.short_description }}
+				</h3>
+				<a href="#" class="project-description-toggle h6 uppercase medium-light mt1 tracked">
+					Show More +
+				</a>
+			</div>
+			<div class="col-sm-6 offset-sm-1 offset-lg-1 project-metadata">
+				{% if item.location %}
+					<h4 class="project-metadata-item">
+						<span class="medium metadata-label">Location</span>
+						<span class="metadata-value">{{ item.location }}</span>
+					</h4>
+				{% endif %}
+				{% if item.client %}
+					<h4 class="project-metadata-item">
+						<span class="medium metadata-label">Client</span>
+						<span class="metadata-value">{{ item.client }}
+					</h4>
+				{% endif %}				
+				{% if item.timeline %}
+					<h4 class="project-metadata-item">
+						<span class="medium metadata-label">Timeline</span>
+						<span class="metadata-value">{{ item.timeline }}
+					</h4>
+				{% endif %}
+				{% if item.services %}
+					<h4 class="project-metadata-item">
+						<span class="medium metadata-label">Services</span>
+						<span class="metadata-value">{{ item.services }}
+					</h4>
+				{% endif %}		
+				<h4 class="project-metadata-item">
+					<span class="medium metadata-label">Categories</span>
+					<span class="metadata-value">{{ item.categories.names }}
+				</h4>
+			</div>
+		</div>
+	</div>
+</section>

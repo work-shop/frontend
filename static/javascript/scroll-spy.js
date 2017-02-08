@@ -7,28 +7,39 @@ module.exports = function($){
 	var scrollSpy = {};
 
 	var activated = false;
+	var firstPass = true;
 
 
 	function initialize(startElement, targetElements, linkElements, offset){
 
-		if( startElement ){
-			startElement = $(startElement);
-			startElement.addClass('active');
-			scrollSpy.currentElement = startElement;
-		}
+		$(window).on("load", function() {		
 
-		scrollSpy.targets = $(targetElements);
-		scrollSpy.links = $(linkElements);
-		scrollSpy.offset = offset;
+			scrollSpy.targets = $(targetElements);
+			scrollSpy.links = $(linkElements);
+			scrollSpy.offset = offset;
 
-		scrollSpy.spyMap = [];
+			if( startElement ){
+				startElement = $(startElement);
+				startElement.addClass('active');
+				scrollSpy.currentElement = startElement;
+			}else{
+				scrollSpy.currentElement = scrollSpy.targets[0];
+			}		
 
-		update();
+			scrollSpy.spyMap = [];
+
+			update();
+
+			setTimeout(function() {	update(); setTimeout(function() { update(); }, 5000); }, 2500);
+
+		});
 
 	}
 
 
 	function update(){
+
+		//console.log('scrollspy update');
 
 		scrollSpy.targets.each(function( i ) {
 
@@ -37,6 +48,7 @@ module.exports = function($){
 			scrollSpy.spyMap[i].target = $(this); 
 			var offset = $(this).offset();
 			scrollSpy.spyMap[i].targetOffset = Math.round(offset.top);
+
 
 			//take the ID of this target element, and see if there is a link that matches it
 
@@ -51,10 +63,12 @@ module.exports = function($){
 				scrollSpy.spyMap[i].hasLink = false;
 			}
 
-			// console.log(scrollSpy.spyMap[i].target);
-			// console.log(scrollSpy.spyMap[i].targetOffset);
-			// console.log(scrollSpy.spyMap[i].hasLink);
-			// console.log(scrollSpy.spyMap[i].link);
+
+			//console.log('target:');
+			//console.log('#' + scrollSpy.spyMap[i].target.attr('id') + ': ' + scrollSpy.spyMap[i].targetOffset);
+			//console.log('targetOffset: ' + scrollSpy.spyMap[i].targetOffset);
+			//console.log('hasLink: ' + scrollSpy.spyMap[i].hasLink);
+			//console.log('link: ' + scrollSpy.spyMap[i].link);
 
 		});
 
@@ -98,7 +112,8 @@ module.exports = function($){
 			userLocation = $(window).scrollTop() + scrollSpy.offset;
 
 			targetOffsetPosition = scrollSpy.spyMap[i].targetOffset;
-			tolerance = ($(window).height() - scrollSpy.offset) / 2;
+			//tolerance = ($(window).height() - scrollSpy.offset) / 2;
+			tolerance = scrollSpy.offset;
 			targetPosition = targetOffsetPosition - tolerance;
 
 			if( i < (nElements - 1) ){
@@ -107,10 +122,14 @@ module.exports = function($){
 			}
 
 			//if the user's window.scrollTop is greater than or equal to the offsetTop of the element we're currently checking AND it's not the last targetable element OR the user's window.scrollTop is less than the next element then we think this element should be active
-			if( userLocation >= targetPosition && ( ( i === nElements - 1 ) || (userLocation < nextTargetPosition) ) ) {
+			if( userLocation >= targetPosition && ( ( i === nElements - 1 ) || (userLocation < nextTargetPosition) ) || firstPass ) {
 
 				//if the element we think should be active is not the current element
-				if(scrollSpy.currentElement !== (scrollSpy.spyMap[i].target)){
+				if(scrollSpy.currentElement !== (scrollSpy.spyMap[i].target) || firstPass ){
+
+					if( firstPass ){
+						firstPass = false;
+					}
 
 					scrollSpy.currentElement.removeClass('active');
 
@@ -144,10 +163,15 @@ module.exports = function($){
 	function activate(){
 
 		var spyTrigger = debounce(function() {
-			window.requestAnimationFrame(spy);	
+			window.requestAnimationFrame(spy);
 		}, 10);
 
+		var spyUpdate = debounce(function() {
+			window.requestAnimationFrame(update);	
+		}, 50);		
+
 		window.addEventListener('scroll', spyTrigger);
+		window.addEventListener('resize', spyUpdate);
 
 	}
 

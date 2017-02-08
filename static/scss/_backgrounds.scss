@@ -8,6 +8,10 @@
 	background: #ffffff;
 }
 
+.bg-ultra-light{
+	background: $ultra-light;
+}
+
 .bg-light{
 	background: $light;
 }
@@ -22,6 +26,10 @@
 
 .bg-brand{
 	background: $brand;
+}
+
+.bg-yellow{
+	background: lighten($yellow, 3%);
 }
 
 
@@ -55,5 +63,11 @@
 		left: 0;
 		z-index: 2;
 		@include transition(all .25s);
+	}
+
+	&.mask-dark{
+		&:after{
+			background: transparentize( $dark, .75 );
+		}
 	}
 }

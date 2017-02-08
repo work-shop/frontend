@@ -12,8 +12,8 @@
 @import "margins-and-padding";
 @import "backgrounds";
 @import "modals";
+@import "slick-components";
 @import "helpers";
-@import "general";
 
 
 //typography
@@ -23,13 +23,23 @@
 
 
 //site components
+@import "general";
 @import "nav";
 @import "footer";
+@import "wysiwyg";
 
 
 //pages
 @import "home";
 @import "about";
+@import "work";
+@import "filters";
+@import "project";
+@import "stories";
+@import "news";
+@import "contact";
+@import "careers";
+
 
 
 

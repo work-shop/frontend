@@ -1,0 +1,5 @@
+<a href="{{ news_item.link }}">
+	<img src="{{ featured_image(news_item, 'news')}}" />
+	<h6 class="medium uppercase mb0 news-date">{{ news_item.acf.date }}</h6>
+	<h4 class="m0 news-title">{{ news_item.title.rendered|safe }}</h4>
+</a>

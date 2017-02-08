@@ -40,7 +40,7 @@ img,video,svg,iframe{
 a{
 	color: $dark;
 	text-decoration: none;
-	&:hover,&:focus{
+	&:hover{
 		color:$dark;
 		text-decoration: none;
 		outline: none;

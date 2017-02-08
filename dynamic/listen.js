@@ -2,13 +2,13 @@
 
 var fs = require('fs');
 
-module.exports = function( app, socket, options ) {
+module.exports = function( app, socket, config, globals ) {
 
-	if ( options.development ) {
+	if ( config.development ) {
 
-		app.listen( options.port, function () {
+		app.listen( config.port, function () {
 
-			console.log('Server listening on port ' + options.port );
+            globals.log.log( 'Server listening on port ' + config.port, 'configuration' );
 
 		});
 
@@ -24,7 +24,9 @@ module.exports = function( app, socket, options ) {
 
 		} catch ( e ) {
 
-            console.error( ['Fatal Error for \'', options.name, '\': Unable to remove existing socket for nginx reverse-proxy.'].join('') );
+            globals.log.error( e, 'socket-bind' );
+
+            console.error( ['Fatal Error for \'', config.name, '\': Unable to remove existing socket for nginx reverse-proxy.'].join('') );
 
         }
 

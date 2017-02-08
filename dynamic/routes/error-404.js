@@ -1,9 +1,9 @@
 "use strict";
 
 
-module.exports = function( wp, options ) {
+module.exports = function( wp, config, globals ) {
 
-    var page404 = require('./404.js')( wp, options );
+    var page404 = require('./404.js')( wp, config );
 
     return function( err, req, res, next ) {
         if ( err.status === 404 ) {

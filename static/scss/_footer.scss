@@ -1,0 +1,62 @@
+
+/* footer */
+
+#footer{
+	*{
+		color: white;
+	}
+}
+
+.footer-lines{
+	display: block;
+	background-image: url('/public/images/footer-lines.png'); 
+	background-size: cover;
+	width: 50%;
+	height: 100%;	
+	position: absolute;
+	left: 0;
+	top: 0;
+
+	@media screen and (max-width: $md) {
+		display: none;
+	}
+}
+
+address,.phone-number{
+	font-style: normal;
+	line-height: 1.9;
+}
+
+.footer-links{
+	margin-top: 1.2em;
+	li{
+		//line-height: 2.23;
+		line-height: 1.9;
+	}
+}
+
+.footer-logo{
+	margin-bottom: 10px;
+	svg{
+		width: 140px;
+
+		@media screen and (max-width: $md) {
+			width: 120px;
+		}		
+
+		path,polygon{
+			fill: white;
+		}
+	}
+}
+
+.social-icon{
+	width: 16px;
+	margin-right: 10px;
+
+	@media screen and (max-width: $xs) {
+		width: 13px;
+	}
+}
+
+

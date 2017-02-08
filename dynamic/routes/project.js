@@ -3,18 +3,16 @@
 var empty = require('../utilities/empty.js');
 var destructure = require('../utilities/destructure-projects-response.js');
 
-module.exports = function( cms, options ) {
+module.exports = function( wp, config, globals ) {
 
-    var urlReplace = require('../utilities/resource-map.js')( options );
+    var urlReplace = require('../utilities/resource-map.js')( config );
 
     return function( req, res, next ) {
 
         var postName = req.params.id;
 
-        cms .projects()
-            .param('_embed', true)
-            .filter( 'name', postName )
-            .then( function( data ) {
+        wp.projects().param('_embed', true).filter( 'name', postName ).then( function( data ) {
+            wp.namespace( 'acf/v2' ).options().then( function( dataOptions ) {
 
                 if ( empty( data ) ) {
 
@@ -24,15 +22,31 @@ module.exports = function( cms, options ) {
 
                 } else if ( data.length === 1 ) {
 
-                    res.render( 'project.html', { item: destructure( urlReplace( data[0] ) ) } );
+                    res.render( 'project.html', {
+                       globals: globals,
+                       options: dataOptions.acf,
+                       item: destructure( urlReplace( data[0] ) )
+                   } );
 
                 } else {
 
-                    console.error( 'CMS: returned multiple results for single slug' );
+                    globals.log.error( "Server returned multiple items for a single postName" );
+                    res.render( '404.html', { error_code: 500, message: "Multiple results are embedded at this endpoint!"});
 
                 }
 
+            }).catch( function( err ) {
+
+                globals.log.error( err, 'project' );
+                res.render( '404.html', { error_code: 500, message: "Backend server returned an error response in options(): " + err.message });
+
             });
+        }).catch( function( err ) {
+
+            globals.log.error( err, 'project' );
+            res.render( '404.html', { error_code: 500, message: "Backend server returned an error response in projects(): " + err.message });
+
+        });
 
     };
 };

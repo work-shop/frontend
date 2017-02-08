@@ -1,11 +1,14 @@
 {% extends 'partials/base.html' %}
 
 {% block definitions %} {% endblock %}
-{% block body_classes %} {% endblock %}
+{% block body_classes %} page-home {% endblock %}
 
 
 {% block content %}
 
-  {% include "partials/home-content.html" %}
+	{% include "partials/home/home-slideshow.html" %}
+	{% include "partials/home/home-about.html" %}
+	{% include "partials/about/about-clients.html" %}		
+	{% include "partials/home/home-contact.html" %}	
 
 {% endblock %}

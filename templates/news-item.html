@@ -1,0 +1,14 @@
+{% extends 'partials/base.html' %}
+
+{% block definitions %} {% endblock %}
+{% block body_classes %} page-news {% endblock %}
+
+
+{% block content %}
+
+	{% include "partials/news-item/news-header.html" %}
+	{% include "partials/news-item/news-description.html" %}
+	{% include "partials/stories.html" %}
+	{% include "partials/news-item/news-related.html" %}
+
+{% endblock %}

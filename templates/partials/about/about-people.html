@@ -1,0 +1,17 @@
+<section class="block pb2 spy-target" id="people">
+	<div class="container-fluid">
+		<div class="row">	
+			<div class="" id="people-list">
+				{% for person in people %}
+					{% include 'person.html' %}			
+				{% endfor %}
+			</div>
+			<div class="" id="people-statement">
+				<h3 class="">
+					{{ options.people_statement }}
+				</h3>
+			</div>
+		</div>
+	</div>
+</section>
+

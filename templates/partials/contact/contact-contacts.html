@@ -1,0 +1,23 @@
+
+<section class="block" id="contact-contacts">
+	<div class="container">
+		{% for contact in item.acf.contacts %}
+		<div class="row contact-item row-item">
+			<div class="col-sm-12">
+				<hr>
+			</div>
+			<div class="col-md-3"><h4 class="bold medium-dark">{{ contact.contact_title }}</h4></div>
+			<div class="col-md-3"><h4>{{ contact.contact_name }}</h4></div>
+			<div class="col-md-3"><h4>{{ contact.contact_email }}</h4></div>
+			<div class="col-md-3"><h4 class="tracked-less">{{ contact.contact_phone_number }}</h4></div>
+		</div>
+		{% endfor %}
+		<div class="row contact-item">
+			<div class="col-sm-12">
+				<hr>
+			</div>		
+			<div class="col-md-3"><h4 class="bold medium-dark">Want to talk to a specific person?</h4></div>
+			<div class="col-md-3"><h4><a href="/about#people" class="h4">See Our Employee Directory --></a></h4></div>
+		</div>
+	</div>
+</section>

@@ -1,20 +1,14 @@
 {% extends 'partials/base.html' %}
 
 {% block definitions %} {% endblock %}
-{% block body_classes %} {% endblock %}
+{% block body_classes %} page-project {% endblock %}
 
 
 {% block content %}
-
-<article>
-
-	<script>console.log({{ item|json|safe }})</script>
-
-    <h1>{{ item.title }}</h1>
-    <div>
-        {{ item.content|safe }}
-    </div>
-
-</article>
+	{% include "partials/project/project-slideshow.html" %}
+	{% include "partials/project/project-header.html" %}
+	{% include "partials/project/project-introduction.html" %}
+	{% include "partials/stories.html" %}
+	{% include "partials/project/project-related.html" %}
 
 {% endblock %}

@@ -11,53 +11,54 @@ If a key is supplied that is not in the $breakpoints list, the mixin will throw 
 
 //default sizes
 $text-massive: (
-  xs: (42px, 54px),
-  sm: (60px, 72px),
-  md: (76px, 84px),
-  lg: (82px, 90px),
-  xl: (82px, 90px)
+  xs: (23px, 28px),
+  sm: (24px, 30px),
+  md: (30px, 36px),
+  lg: (36px, 43px),
+  xl: (44px, 50px)  
 ) !default;
 
 $text-huge: (
-  xs: (48px, 42px),
-  sm: (48px, 54px),
-  md: (48px, 54px),
-  lg: (48px, 60px),
-  xl: (52px, 60px)
+  xs: (16px, 24px),
+  sm: (17px, 24px),
+  md: (21px, 30px),
+  lg: (26px, 36px),
+  xl: (27px, 40px)  
 ) !default;
 
 $text-large: (
-  xs: (28px, 36px),
-  sm: (28px, 36px),
-  md: (36px, 42px),
-  lg: (36px, 42px),
-  xl: (40px, 48px)
+  xs: (13px, 20px),
+  sm: (15px, 23px),
+  md: (17px, 26px),
+  lg: (20px, 28px),
+  xl: (21px, 29px)
 ) !default;
 
-$text-medium: (
-  xs: (24px, 30px),
-  sm: (24px, 30px),
-  md: (28px, 36px),
-  lg: (28px, 36px),
-  xl: (36px, 42px)
+$text-regular: (
+  xs: (12px, 20px),
+  sm: (13px, 22px),
+  md: (15px, 27px),
+  lg: (15px, 29px),
+  xl: (16px, 31px)
+) !default;
+
+$text-medium-small: (
+  xs: (11px, 18px),
+  sm: (12px, 20px),
+  md: (14px, 25px),
+  lg: (15px, 29px),
+  xl: (16px, 30px)
 ) !default;
 
 $text-small: (
-  xs: (12px, 18px),
+  xs: (10px, 16px),
+  sm: (10px, 18px),
+  md: (11px, 18px),
+  lg: (12px, 20px),
+  xl: (12px, 20px)
 ) !default;
 
 
-$text-regular: (
-  xs: (16px, 24px),
-  sm: (16px, 24px),
-  md: (16px, 24px),
-  lg: (16px, 24px),
-  xl: (22px, 30px)
-) !default;
-
-
-
-//custom sizes
 
 
 

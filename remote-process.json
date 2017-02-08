@@ -1,0 +1,14 @@
+{
+    "apps": [{
+            "name": "dbvw.workshopdesignstudio.org",
+            "script": "./index.js",
+            "watch": false,
+            "env": {
+                "NODE_ENV": "production",
+            },
+            "source_map_support": false,
+            "error_file": "../logs/err.log",
+            "out_file": "../logs/out.log",
+            "autorestart": true
+    }]
+}

@@ -2,24 +2,36 @@
 
 module.exports = function( $ ) {
 
-	function jump(destination,speed){
+	function jump(destination, offset, speed){
 		if(!speed){
 			speed = 1500;
 		}
+
 		$('html,body').animate({
-			scrollTop: $(destination).offset().top - 0
+			scrollTop: $(destination).offset().top - offset
 		},speed);
 
 	}
 
-	function setupJumpEvents( selector ) {
+	function setupJumpEvents( selector, offset, mobileBreakpoint, offsetMobile, preventUrl ) {
 
 		$( document ).ready( function() {
+
 			$(selector).click(function(e){
-				e.preventDefault();
+				
+				if(preventUrl){
+					e.preventDefault();
+				}
+
 				var href = $(this).attr("href").toLowerCase();
-				jump(href);	
+
+				if( $(window).width() > mobileBreakpoint){
+					jump(href, offset);	
+				} else{
+					jump(href, offsetMobile);	
+				}
 			});
+
 		});
 
 	}

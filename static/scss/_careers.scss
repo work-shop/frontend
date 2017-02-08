@@ -1,0 +1,12 @@
+
+
+.slick-arrow{
+	@media screen and (max-width: $md) {
+		left: -30px;
+		margin-top: -15px;
+
+		&.slick-next{
+			right: -30px;
+		}
+	}
+}

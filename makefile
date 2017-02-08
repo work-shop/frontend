@@ -5,6 +5,7 @@
 PROJECT-NAME = dbvw
 DOMAIN-NAME = dbvw.workshopdesignstudio.org
 PROJECT-IP= 45.55.43.76
+LOCAL-URL= http://localhost:8080
 
 ROOT-DIRECTORY = ./
 TEMPLATE-DIRECTORY=templates/
@@ -37,11 +38,12 @@ scss-postcompilation-hook=cat
 
 .PHONY: all clean
 
-all: build-client-js build-client-scss
+#all: build-client-js build-client-scss
+all: start
 
 start: run-server watch-build
 
-stop: kill-build kill-server
+stop: kill-watch kill-server
 
 install-dependencies:
 	brew install fswatch
@@ -61,7 +63,7 @@ build-client-scss:
 watch-build:
 	fswatch -r -0 $(JAVASCRIPT-SOURCE-DIRECTORY) | xargs -0 -n 1 make build-client-js 1>/dev/null &
 	sass --scss --watch $(SCSS-SOURCE-DIRECTORY)$(SCSS-SOURCE-MAIN):$(SCSS-TARGET-DIRECTORY)$(SCSS-TARGET-MAIN) &
-	livereload "./public, ./templates" -w 550 &
+	livereload "./public, ./templates" -w 1100 &
 
 kill-watch:
 	kill -9 $$(ps aux | grep -v grep | grep "fswatch" | awk '{print $$2}')
@@ -70,10 +72,13 @@ kill-watch:
 
 run-server:
 	pm2 start local-process.json --node-args "--development"
+	subl
+	open $(LOCAL-URL)
 
 kill-server:
 	pm2 stop local-process.json
 	pm2 delete local-process.json
+	kill-watch
 
 clean:
 	rm -f logs/*

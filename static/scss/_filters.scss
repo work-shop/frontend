@@ -1,0 +1,245 @@
+
+/* project filtering */
+
+$nav-width-xl: 465px;
+$nav-width-lg: 392px;
+$nav-width-md: 296px;
+$button-offset: 80px;
+$button-offset-md: 64px;
+
+$category-nav-right-xl: $nav-width-xl - ($container-fluid-padding * 2) - $button-offset;
+$category-nav-right-fixed-xl: $category-nav-right-xl + $container-fluid-padding;
+$category-nav-right-lg: $nav-width-lg - ($container-fluid-padding * 2) - $button-offset;
+$category-nav-right-fixed-lg: $category-nav-right-lg + $container-fluid-padding;
+$category-nav-right-md: $nav-width-md - $container-fluid-padding-mobile - $button-offset-md;
+
+$category-nav-color: transparentize(darken($ultra-light, 0%),.03);
+$category-nav-color: transparentize(darken(white, 0%),.03);
+
+$category-nav-height: 40px;
+$category-menu-width: 220px;
+$category-menu-height: 360px;
+$category-menu-height-sm: 310px;
+
+
+$text-filters: (
+	xs: (13px, 23px),
+	sm: (13px, 23px),
+	md: (14px, 28px),
+	lg: (14px, 28px),
+	xl: (14px, 28px)
+	) !default;
+
+
+.filters{
+	position: relative;
+	z-index: 3;
+	top: 30px;
+
+	&.open{
+
+		.category-nav{
+			height: auto;
+		}	
+
+		.filters-button-group{
+			opacity: 1;
+			height: $category-menu-height;
+
+			@media screen and (max-width: $sm) {
+				height: $category-menu-height-sm;
+				overflow: scroll;
+			}
+
+			@media screen and (max-height: 420px) {
+				padding-bottom: 100px;
+			}
+		}
+	}	
+
+	&.fixed{
+		padding-top: 0;
+		position: fixed;
+		top: $nav-height;
+		left: 0;
+		width: 100%;
+		height: $category-nav-height;
+		overflow: hidden;
+		background: $category-nav-color;
+
+		&.open{
+			overflow: visible;
+		}
+
+		.category-nav{
+			right: $category-nav-right-fixed-xl;
+
+			@media screen and (max-width: $lg) {
+				right: $category-nav-right-fixed-lg;
+			}
+		}
+
+	}
+
+	@media screen and (max-width: $md){
+		padding-top: 0;
+		position: fixed;
+		top: $nav-height;
+		left: 0;
+		width: 100%;
+		height: $category-nav-height;
+		overflow: hidden;
+		background: $category-nav-color;	
+
+		&.open{
+			overflow: visible;
+		}		
+
+		.category-nav{
+			right: $category-nav-right-md;		
+		}
+
+		&.fixed{
+			.category-nav{
+				right: $category-nav-right-md;		
+			}
+		}
+	}
+
+	@media screen and (max-width: $sm){
+		left: 0px;
+		position: fixed;
+		top: $nav-height-mobile;	
+
+		&.fixed{
+			top: $nav-height-mobile;
+
+			.category-nav{
+				right: auto;
+				left: 0;
+			}
+		}		
+
+		.category-nav{
+			right: auto;
+			left: 0;
+		}
+	}	
+}
+
+
+.category-nav{
+	position: absolute;
+	right: $category-nav-right-xl;
+	width: $category-menu-width;
+	height: 0;
+
+	@media screen and (max-width: $lg) {
+		right: $category-nav-right-lg;
+	}
+
+	@media screen and (max-width: $sm) {
+		width: 100%;
+		//right: 0;
+	}
+}
+
+
+
+.filter-dropdown-button{
+	@extend .tracked;
+	@extend .bold;
+	@extend .uppercase;
+	display: block;
+	color: $brand;
+	width: $category-menu-width;	
+	font-size: 14px;	
+	padding: 8px 13px;
+	background: transparent;
+	@include transition(all .25s);
+
+	@media screen and (max-width: $sm) {
+		font-size: 11px;
+	}
+
+	.icon:before{
+		text-transform: lowercase;
+	}
+
+	&:hover{
+		color: $brand;
+	}
+}
+
+#category-label{
+	display: block;
+	color: $medium;
+	padding: 0px 13px;	
+	background: $category-nav-color;	
+	display: none;
+	margin-top: -3px;
+
+	@media screen and (max-width: $sm) {
+		width: 100%;
+	}
+
+	.category-label-text{
+		@include text-size($text-small);
+		text-transform: none;
+	}
+
+	&.on{
+		display: block;
+	}
+
+	.icon:before{
+		font-size: 23px;
+		top: 1px;
+	}
+}
+
+
+.filters-button-group{
+	@include transition(all .25s);
+	width: $category-menu-width;
+	opacity: 0;	
+	height: 0;
+	background: $category-nav-color;
+	margin-top: -3px;
+	padding-top: 15px;
+	padding-bottom: 10px;
+
+	@media screen and (max-width: $sm) {
+		width: 100%;
+		background: $ultra-light;
+		border-bottom: 1px solid $light;
+	}
+
+	li{
+		padding-left: 14px;		
+		@include text-size($text-filters);
+	}
+
+	.filter-button{
+		background: none;
+		border: none;
+		outline: none;
+		padding: 0;
+		@include text-size($text-filters);
+		letter-spacing: .03em;		
+		color: $medium-dark;
+
+		&.is-checked{
+			@extend .bold;			
+			color: $brand;
+		}
+
+		&:hover{
+			cursor: pointer;
+			color: darken($brand,10%);
+		}
+	}
+
+}
+
+

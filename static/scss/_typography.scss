@@ -3,39 +3,95 @@ body{
 	font-family: $font-main;
 	font-weight: normal;
 	@include text-size($text-regular);
+	color: $dark;
 }
+
+*{
+	font-family: $font-main;	
+}
+
 
 //type sizes
 //default sizes include:
 //massive, huge, large, medium, regular, small
 
-h1{
+h1,.h1{
 	@include text-size($text-massive);
 }
 
-h2{
+h2,.h2{
 	@include text-size($text-huge);
 }
 
-h3{
+h3,.h3{
 	@include text-size($text-large);
 }
 
-h4{
-	@include text-size($text-medium);
+h4,.h4{
+	@include text-size($text-medium-small);
 }
 
-h5{
-	@include text-size($text-regular);
+h5,.h5{
+	@include text-size($text-small);
 }
 
-h6{
+h6,.h6{
 	@include text-size($text-small);
 }
 
 p{
-	@include text-size($text-regular);
+	@include text-size($text-regular);	
+	margin-top: 0;
 }
+
+//formatting
+
+.bold,strong{
+	font-family: $font-bold;
+	//font-weight: bold;
+}
+
+.italic,em{
+	font-family: $font-italic;
+	//font-style: italic;
+}
+
+.font-light{
+	font-family: $font-light;
+	//font-style: italic;
+}
+
+
+.uppercase{
+	text-transform: uppercase;
+}
+
+.underline{
+	text-decoration: underline;
+}
+
+.centered{
+	text-align: center;
+}
+
+.righted{
+	text-align: right;
+}
+
+.tracked-less{
+	letter-spacing: .05em;
+}
+
+.tracked{
+	letter-spacing: .09em;
+}
+
+.tight{
+	line-height: 1.25;
+}
+
+
+
 
 //typography colors
 
@@ -55,23 +111,24 @@ p{
 	color: $light;
 }
 
+.medium-light{
+	color: $medium-light;
+}
+
 .medium{
 	color: $medium;
+}
+
+.medium-dark{
+	color: $medium-dark;
 }
 
 .dark{
 	color: $dark;
 }
 
-
-//formatting
-
-.uppercase{
-	text-transform: uppercase;
-}
-
-.underline{
-	text-decoration: underline;
+.yellow-darker{
+	color: $yellow-darker;
 }
 
 

@@ -11,7 +11,7 @@ module.exports = function($) {
 	function setupSomething() {
 
 		$( document ).ready( function() {
-			doSomething();
+			window.requestAnimationFrame(doSomething);	
 		});
 
 	}

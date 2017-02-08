@@ -1,0 +1,21 @@
+
+<section class="block padded" id="careers-providence">
+	<div class="container-fluid">
+		<div class="row mb4">
+			<div class="col-md-8 col-lg-7">
+				<h3 class="">{{ item.acf.providence_statement }}</h3>
+			</div>
+		</div>
+		<div class="row pb3">
+			<div class="col-xs-10 offset-xs-1 col-md-12 offset-md-0 offet-lg-0">
+				<div class="slick-default providence-slideshow">
+					{% for image in item.acf.providence_slideshow %}
+						<div>
+							<img src="{{ image.sizes.category }}" />
+						</div>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

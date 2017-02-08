@@ -1,0 +1,51 @@
+
+<div class="person" id="{{person.slug}}">
+	<a href="#people={{person.slug}}" class="modal-toggle modal-person-toggle" data-modal-target="modal-person-{{person.slug}}">
+		<img src="{{ person.acf.photo.sizes.person }}" />
+		<div class="person-header">
+			<h4 class="bold person-name medium-dark">{{ person.title.rendered|safe }}</h4>
+			<h5 class="medium-dark person-title">{{ person.acf.job_title|safe }}</h5>
+			<h5 class="medium-dark person-email">{{ person.acf.email|safe}}</h5>
+		</div>
+	</a>
+</div>
+
+<div class="modal modal-person" id="modal-person-{{person.slug}}">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="modal-person-blanket modal-close">&nbsp;</div>
+			<div class="modal-person-content">
+				<div class="tile person-tile">
+					<img src="{{ person.acf.photo.sizes.person }}" />
+					<div class="person-header">
+						<h4 class="bold person-name medium-dark">{{ person.title.rendered|safe }}</h4>
+						<h5 class="medium-dark person-title">{{ person.acf.job_title|safe }}</h5>
+						<h5 class="medium-dark person-email">{{ person.acf.email|safe}}</h5>
+					</div>
+				</div>
+				<p class="person-bio mt1 h4">
+					{{ person.acf.bio|safe }}
+				</p>
+				<div class="person-fun-facts m2">
+					{% if person.acf.fun_facts_label %}
+						<h5 class="ff-label medium mb0"> {{ person.acf.fun_facts_label }}</h5>
+						<h4 class="ff-description "> {{ person.acf.fun_facts_description|safe }}</h4>
+					{% endif %}
+					{% if person.acf.fun_facts_label_2 %}
+						<h5 class="ff-label medium mb0"> {{ person.acf.fun_facts_label_2 }}</h5>
+						<h4 class="ff-description "> {{ person.acf.fun_facts_description_2|safe }}</h4>
+					{% endif %}					
+					{% if person.acf.fun_facts_label_3 %}
+						<h5 class="ff-label medium mb0"> {{ person.acf.fun_facts_label_3 }}</h5>
+						<h4 class="ff-description "> {{ person.acf.fun_facts_description_3|safe }}</h4>
+					{% endif %}
+				</div>
+				{% if person.acf.email %}
+					<a href="mailto:{{person.acf.email}}" target="_blank" class="button-yellow button">	
+						Email {{ person.title.rendered|safe }}
+					</a>	
+				{% endif %}
+			</div>
+		</div>		
+	</div>
+</div>

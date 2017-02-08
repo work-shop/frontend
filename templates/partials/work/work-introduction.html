@@ -1,0 +1,42 @@
+<section class="block overlapping" id="work-introduction">
+    <div class="container-fluid">
+        <div class="row work-introduction-row">
+            <div class="col-md-10 col-lg-6 work-introduction-col">
+                <div class="work-introduction-category" id="work-introduction-category">
+                    {% if routeCategory %}
+                        {% for category in project_categories %}
+                            {% if routeCategory === category.slug %}
+                                {% set currentCategoryId = loop.index0 %}
+                                <h3 class="medium category-title">
+                                    {{ category.name }}
+                                </h3>
+                                <h2 class="work-statement category-description">
+                                    {% if category.description %}
+                                        {{ category.description }}
+                                    {% endif %}
+                                </h2>
+                            {% endif %}
+                        {% endfor %}
+                    {% else %}
+                        {% set currentCategoryId = project_categories.length - 1 %}
+                        <h3 class="medium category-title">
+                            Work
+                        </h3>
+                        <h2 class="work-statement category-description">
+                            {{ options.work_statement }}
+                        </h2>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="col-md-12 col-lg-6">
+                {% include 'work-filters.html' %}
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<script type="text/javascript">
+    var projectCategories = {{ project_categories|json|safe }};
+</script>
+
