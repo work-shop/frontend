@@ -1,7 +1,7 @@
 {
-  "name": "lri.workshopdesignstudio.org",
-  "title": "lri.workshopdesignstudio.org",
-  "project": "lri",
+  "name": "test.workshopdesignstudio.org",
+  "title": "test.workshopdesignstudio.org",
+  "project": "test",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/work-shop/lri.workshopdesignstudio.org.git"
+    "url": "git+https://github.com/work-shop/frontend"
   },
   "keywords": [],
   "author": "Work-Shop (Greg Nemes, Nic Schumann, Raghda Maaliki)",
@@ -36,13 +36,14 @@
     "wpapi": "^0.11.0"
   },
   "bugs": {
-    "url": "https://github.com/work-shop/lri.workshopdesignstudio.org/issues"
+    "url": "https://github.com/work-shop/frontend/issues"
   },
-  "homepage": "http://github.com/work-shop/lri.workshopdesignstudio.org#readme",
-  "external_api": "http://cms.lri.workshopdesignstudio.org/wp-json",
-  "internal_api": "http://cms.lri.workshopdesignstudio.org/wp-json",
+  "homepage": "http://github.com/work-shop/frontend#readme",
+  "socket": "test.workshopdesignstudio.org.sock",
+  "external_api": "http://cms.test.workshopdesignstudio.org/wp-json",
+  "internal_api": "http://cms.test.workshopdesignstudio.org/wp-json",
   "frontend": {
-    "local_api": "http://localhost/lri/wp-json/wp/v2",
-    "remote_api": "http://cms.lri.wsri.host/wp-json/wp/v2"
-  }  
+    "local_api": "http://localhost/test/wp-json/wp/v2",
+    "remote_api": "http://cms.test.wsri.host/wp-json/wp/v2"
+  }
 }
