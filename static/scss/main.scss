@@ -5,40 +5,33 @@
 @import "slick/slick";
 
 
+//definitions
+@import "definitions/variables";
+@import "definitions/type-sizes";
+
+
 //utilities
-@import "variables";
-@import "reset";
-@import "sizing";
-@import "margins-and-padding";
-@import "backgrounds";
-@import "modals";
-@import "slick-components";
-@import "helpers";
-
-
-//typography
-@import "type-sizes";
-@import "type-size-mixin/type-size__mixin";
-@import "typography";
+@import "utilities/reset";
+@import "utilities/sizing";
+@import "utilities/margins-and-padding";
+@import "utilities/backgrounds";
+@import "utilities/modals";
+@import "utilities/slick-components";
+@import "utilities/helpers";
+@import "utilities/type-size-mixin/type-size__mixin";
 
 
 //site components
-@import "general";
-@import "nav";
-@import "footer";
-@import "wysiwyg";
+@import "site/typography";
+@import "site/general";
+@import "site/nav";
+@import "site/footer";
+@import "site/wysiwyg";
 
 
-//pages
-@import "home";
-@import "about";
-@import "work";
-@import "filters";
-@import "project";
-@import "stories";
-@import "news";
-@import "contact";
-@import "careers";
+//site pages
+@import "site/home";
+@import "site/about";
 
 
 

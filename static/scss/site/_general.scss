@@ -1,0 +1,27 @@
+
+body{
+	background-color: $body-background-color;
+	padding-top: $nav-height;
+
+	@media screen and (max-width: $sm) {
+		padding-top: $nav-height-mobile;
+	}
+}
+
+.container-fluid{
+
+	max-width: $container-fluid-max-width;
+
+	padding-left: $container-fluid-padding;
+	padding-right: $container-fluid-padding;
+
+	@media screen and (max-width: $md) {
+		padding-left: $container-fluid-padding / 2;
+		padding-right: $container-fluid-padding / 2;
+	}
+
+	@media screen and (max-width: $sm) {
+		padding-left: $container-fluid-padding-mobile;
+		padding-right: $container-fluid-padding-mobile;
+	}	
+}

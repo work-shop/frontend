@@ -2,8 +2,8 @@
 # GLOBALLY DEFINED CONSTANTS (Defined Once, on a Per-Project Basis)
 # -------------------------------------------------------------
 
-PROJECT-NAME = dbvw
-DOMAIN-NAME = dbvw.workshopdesignstudio.org
+PROJECT-NAME = lri
+DOMAIN-NAME = lri.wsri.host
 PROJECT-IP= 45.55.43.76
 LOCAL-URL= http://localhost:8080
 

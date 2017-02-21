@@ -1,15 +1,19 @@
 {
-  "name": "template",
-  "title": "Template",
-  "project": "dbvw",
+  "name": "lri.workshopdesignstudio.org",
+  "title": "lri.workshopdesignstudio.org",
+  "project": "lri",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "git push live +master:refs/heads/master",
+    "watch": "make watch-server; make watch-build",
+    "kill": "make kill-watch"
   },
   "repository": {
-
+    "type": "git",
+    "url": "git+https://github.com/work-shop/lri.workshopdesignstudio.org.git"
   },
   "keywords": [],
   "author": "Work-Shop (Greg Nemes, Nic Schumann, Raghda Maaliki)",
@@ -18,16 +22,27 @@
     "argparse": "^1.0.7",
     "async": "^2.1.2",
     "bootstrap": "^4.0.0-alpha.5",
-    "bourbon": "^4.2.7",
+    "bourbon": "^4.3.2",
     "colors": "^1.1.2",
     "express": "^4.14.0",
     "isotope-layout": "^3.0.1",
     "jquery": "^3.0.0",
     "parse-json-response": "^1.0.1",
+    "request": "^2.79.0",
+    "request-promise": "^4.1.1",
     "slick-carousel": "^1.6.0",
     "swig": "^1.4.2",
     "util-extend": "^1.0.3",
-    "wordpress-rest-api": "^0.7.0",
     "wpapi": "^0.11.0"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/work-shop/lri.workshopdesignstudio.org/issues"
+  },
+  "homepage": "http://github.com/work-shop/lri.workshopdesignstudio.org#readme",
+  "external_api": "http://cms.lri.workshopdesignstudio.org/wp-json",
+  "internal_api": "http://cms.lri.workshopdesignstudio.org/wp-json",
+  "frontend": {
+    "local_api": "http://localhost/lri/wp-json/wp/v2",
+    "remote_api": "http://cms.lri.wsri.host/wp-json/wp/v2"
+  }  
 }

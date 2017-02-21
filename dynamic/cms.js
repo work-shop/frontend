@@ -6,7 +6,7 @@ module.exports = function( schema, config ) {
 
 	//returning an instance of the API, including the schema or information architecture
 	return new WP({
-        endpoint: config.remote_api, 
+        endpoint: config.external_api,
         routes: schema.routes
     });
 

@@ -3,32 +3,18 @@
 		<div class="row">
 			<div class="logo col-sm-3 col-xs-6">
 				<a href="/">
-					{% include 'logo.svg' %}
+					{# {% include 'logo.svg' %} #}
 				</a>
 			</div>
 			<div class="col-sm-9 col-xs-6" id="nav-menu">
 				<ul class="nav-items">
-					<li><a href="/work" class="nav-work-link">Work</a></li>
-					<li><a href="/about" class="nav-about-link">About</a></li>
-					<li><a href="/news" class="nav-news-link">News</a></li>
-					<li><a href="/contact" class="nav-contact-link">Contact</a></li>
-					<li><a href="#search" class="search-toggle">Search</a></li>
 				</ul>
 			</div>
-
 		</div>
 	</div>
 </nav>
 <div id="mobile-nav">
-	<ul class="mobile-nav-items">
-		<li><a href="/work" class="nav-work-link">Work</a></li>
-		<li><a href="/about" class="nav-about-link">About</a></li>
-		<li><a href="/news" class="nav-news-link">News</a></li>
-		<li><a href="/contact" class="nav-contact-link">Contact</a></li>
-		{# <li><a href="#search" class="search-toggle">Search</a></li> #}
-		<li><a href="/contact">{{ options.footer_inquiries_link_text }}</a></li>
-		<li><a href="/careers">{{ options.footer_careers_link_text }}</a></li>
-		<li><a href="/sharing">{{ options.footer_sharing_link_text }}</a></li>		
+	<ul class="mobile-nav-items">	
 	</ul>
 </div>
 <div class="hamburger menu-toggle">

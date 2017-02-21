@@ -1,0 +1,58 @@
+
+
+$text-nav: (
+	xs: (10px, 9px),
+	sm: (12px, 34px),
+	md: (14px, 53px),
+	lg: (14px, 53px),
+	xl: (15px, 53px)
+	) !default;
+
+#nav{
+	height: $nav-height;
+	width: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 7;
+	background: white;
+	padding-top: 15px;
+
+	@media screen and (max-width: $sm) {
+		height: $nav-height-mobile;
+	}
+
+}
+
+
+.logo{
+
+	svg{
+		width: 172px;
+
+		@media screen and (max-width: $sm) {
+			width: 115px;
+		}
+
+	}
+
+	a{
+		display: block;
+	}
+
+}
+
+.nav-items{
+
+}
+
+
+/* mobile nav */
+
+.mobile-nav-items{
+
+}
+
+.hamburger{
+
+}

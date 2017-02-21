@@ -1,100 +1,55 @@
 "use strict";
 
-var async = require('async');
+var util = require('util');
+var base = require('./generic/base-route.js')();
 
-var destructure = require('../utilities/destructure-projects-response.js'); //destructure the response
+var restructureAbout = require('../structures/restructure-about.js');
 
+/**
+ *
+ *
+ */
 module.exports = function( wp, config, globals ) {
+    return base.route(
+        /**
+         * Get initial set of resources we need to render the page.
+         */
+        [ 
+            wp.namespace( 'acf/v2' ).options().embed(),
+            wp.pages().filter( 'pagename', '/about' )
+        ],
 
-    var urlReplace = require('../utilities/resource-map.js')( config );
+        /**
+         * Success Case. All of the needed resources were properly resolved,
+         * And the data is available for use immediately in the callback, along
+         * with the request and the response.
+         *
+         * @param req the Express Request Object
+         * @param res the Express Response Object
+         * @param options JSON, the requested options data
+         */
+        function( req, res, options ) {
 
-    return function( req, res ) {
+            globals.log.log( 'Successful request to about.', 'route-index:success-handler');
 
-        wp.namespace( 'acf/v2' ).options().then( function( data ) {
+            res.render('about.html', restructureAbout( options ) );
 
-            wp.people().perPage(50).param('_embed', true).then( function( people ) {
+        },
+        /**
+         * Error Case. Something went wrong reconciling one or all of the
+         * requested resources. The error is supplied to the callback
+         * and *you* handle the problem.
+         *
+         * @param req the Express Request Object
+         * @param res the Express Response Object
+         * @param err Error the reason for failure.
+         */
+        function( req, res, err ) {
 
-                //array to map over, function to transform it, callback
-                async.map( data.acf.client_testimonials, resolveProject, function( err, results ) {
+            globals.log.error( err, 'route-index:error-handler');
 
-                    // DON'T FORGET TO CHECK err
+            res.render('error.html', {error_code: 500, description: err.message });
 
-                    if ( err ) {
-
-                        globals.log.error( err, 'about' );
-                        res.render( '404.html', { error_code: 500, message: "Backend server returned an error response in client_testimonials map: " + err.message });
-
-                    } else {
-
-                        data.acf.client_testimonials = results;
-
-                        //renders a template file, and exposes an object with whatever data you want in it
-                        res.render( 'about.html', {
-
-                            globals: globals,
-                            options: data.acf,
-                            people: people,
-                            featured_image: function( project, size ) {
-                                if ( typeof project.featured_media !== "undefined" && typeof project.featured_media[ size ] !== "undefined" ) {
-                                    return project.featured_media[ size ].source_url;
-                                }
-                            }
-                        });
-
-                    }
-
-                });//3rd request
-            }).catch( function( err ) {
-
-                globals.log.error( err, 'about' );
-                res.render( '404.html', { error_code: 500, message: "Backend server returned an error response in people(): " + err.message });
-
-            });//2nd request
-        }).catch( function( err ) {
-
-            globals.log.error( err, 'about' );
-            res.render( '404.html', { error_code: 500, message: "Backend server returned an error response in options(): " + err.message });
-
-        });//1st request
-
-    };
-
-    function resolveProject( item, callback ) {
-
-        try {
-
-            if( typeof item.associated_project.ID !== 'undefined'  ){
-
-                wp.projects()
-                .id( item.associated_project.ID )
-                .param( '_embed', true )
-                .then( function( data ) {
-                   callback( null, {
-                    quote: item.quote,
-                    name: item.name,
-                    associated_project: destructure( urlReplace( data ) )
-                }).catch( function( err ) {
-
-                    globals.log.error( err );
-                    callback( err );
-
-                });
-               });
-
-            } else {
-
-               globals.log.log( 'no associated project', 'resolveProject-about' );
-               callback( null, {});
-
-            }
-
-        } catch( err ) {
-
-            globals.log.error( err, 'resolveProject-about' );
-            callback( err );
-
-        }
-
-   }
+        });
 
 };

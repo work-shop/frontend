@@ -1,6 +1,6 @@
 {
     "apps": [{
-            "name": "dbvw.workshopdesignstudio.org",
+            "name": "lri.workshopdesignstudio.org",
             "script": "./index.js",
             "watch": false,
             "env": {

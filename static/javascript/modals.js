@@ -4,8 +4,6 @@ module.exports = function($) {
 
 	function closeModal(){
 
-		//console.log('closeModal');
-
 		if($('body').hasClass('modal-on')){
 			$('.modal').removeClass('on').addClass('off');
 			$('body').removeClass('modal-on').addClass('modal-off');
@@ -14,9 +12,6 @@ module.exports = function($) {
 	}
 
 	function modalToggle(_target, swap){
-
-		//console.log('modalToggle');
-		//console.log('target: ' + _target);
 
 		var modalTarget = '#' + _target;
 
@@ -36,17 +31,16 @@ module.exports = function($) {
 
 	function urlCheck(){
 
-		//console.log('urlCheck');
-		var hash = window.location.hash;
+		// var hash = window.location.hash;
 
-		if( hash.includes('#people=') ){
-			var person = hash.split('=');
-			//console.log(person[1]);
-			$('html,body').animate({
-				scrollTop: $('#people').offset().top - 75
-			},0);
-			modalToggle('modal-person-' + person[1]);
-		}
+		// if( hash.includes('#people=') ){
+		// 	var person = hash.split('=');
+		// 	//console.log(person[1]);
+		// 	$('html,body').animate({
+		// 		scrollTop: $('#people').offset().top - 75
+		// 	},0);
+		// 	modalToggle('modal-person-' + person[1]);
+		// }
 		
 	}
 

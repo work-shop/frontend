@@ -1,14 +1,13 @@
 {
     "apps": [{
-            "name": "dbvw.workshopdesignstudio.org",
+            "name": "lri.workshopdesignstudio.org",
             "script": "./index.js",
             "watch": true,
             "ignore_watch": [
                 "node_modules",
                 "static",
                 "templates",
-                "logs",
-                "public"
+                "logs"
             ],
             "env": {
                 "NODE_ENV": "development",
