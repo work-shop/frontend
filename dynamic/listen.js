@@ -24,9 +24,7 @@ module.exports = function( app, config, globals ) {
 
 		} catch ( e ) {
 
-            globals.log.error( e, 'socket-bind' );
-
-            globals.log.error( ['Fatal Error for \'', config.name, '\': Unable to remove existing socket for nginx reverse-proxy.'].join(''), 'socket-bind' );
+            globals.log.log( e.message, 'socket-bind' );
 
         }
 
