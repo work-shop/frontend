@@ -15,7 +15,7 @@ module.exports = function( options ) {
                 return typeof object.guid !== "undefined" || typeof object.link !== "undefined";
             },
             function( object ) {
-                if ( typeof object.guid !== "undefined" ) {
+                if ( typeof object.guid !== "undefined" && typeof object.guid.rendered !== "undefined" ) {
                     object.guid.rendered = urlReplace( object.guid.rendered, ['http://localhost', options.port ].join(':') );
                 }
 
@@ -28,7 +28,6 @@ module.exports = function( options ) {
         );
 
     } else {
-
         return function( x ) { return x; };
     }
 };
