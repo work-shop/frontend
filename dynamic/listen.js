@@ -98,12 +98,6 @@ module.exports = function( app, config, globals ) {
 
             globals.log.log( 'unlinked socket.', 'server-exit' );
 
-            globals.salesforce.logout( function( err ) {
-
-                if ( err ) { globals.log.error( err, 'salesforce-authentication'); }
-
-            });
-
         });
 
 
