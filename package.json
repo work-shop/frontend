@@ -24,12 +24,14 @@
     "bootstrap": "^4.0.0-alpha.5",
     "bourbon": "^4.3.2",
     "colors": "^1.1.2",
+    "dnscache": "^1.0.1",
     "express": "^4.14.0",
     "isotope-layout": "^3.0.1",
     "jquery": "^3.0.0",
     "parse-json-response": "^1.0.1",
     "request": "^2.79.0",
     "request-promise": "^4.1.1",
+    "requestretry": "^1.12.0",
     "slick-carousel": "^1.6.0",
     "swig": "^1.4.2",
     "util-extend": "^1.0.3",
@@ -42,7 +44,7 @@
   "socket": "test.workshopdesignstudio.org.sock",
   "external_api": "http://cms.test.workshopdesignstudio.org/wp-json",
   "internal_api": "http://cms.test.workshopdesignstudio.org/wp-json",
-  "retries":{
+  "retries": {
     "attempts": 5,
     "delay": 5000
   },
