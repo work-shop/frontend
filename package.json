@@ -42,6 +42,10 @@
   "socket": "test.workshopdesignstudio.org.sock",
   "external_api": "http://cms.test.workshopdesignstudio.org/wp-json",
   "internal_api": "http://cms.test.workshopdesignstudio.org/wp-json",
+  "retries":{
+    "attempts": 5,
+    "delay": 5000
+  },
   "frontend": {
     "local_api": "http://localhost/test/wp-json/wp/v2",
     "remote_api": "http://cms.test.wsri.host/wp-json/wp/v2"

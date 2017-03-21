@@ -1,7 +1,7 @@
 "use strict";
 
 
-var request = require('request-promise');
+var request = require('requestretry');
 
 var generateConfig = require('./config.js');
 var routes = require('./routes.js');
@@ -11,9 +11,36 @@ var Logger = require('./logging/index.js');
 module.exports = function( express, app, config ) {
     return function() {
 
+        /**
+         * The front-end makes a lot of HTTP requests to the same address.
+         * Let's only hit the DNS stack once. The module below defines
+         * an in-application cache for the response from the DNS stack.
+         */
+        require('dnscache')({
+            'enable': true,
+            'ttl': 300,
+            'cachesize': 1000
+        });
+
+        /** prettier logging... */
         var log = new Logger( config );
 
-        request({ uri: config.external_api, json: true, })
+        /**
+         * The DNS system, and http in general, is fickle. Let's use a retry-library
+         * to handle network errors and ENOTFOUND from the DNS. These are usually transient
+         * errors that we can bypass. This library attempts to resolve the passed cms
+         * name `config.retries.delay` times, and will cache the physical address of the
+         * target machine off of DNS is success is acheived. The speed and consistency increase obtained
+         * through request-retry + dnscache is noticable.
+         */
+        request({
+                url: config.external_api,
+                json: true,
+                maxAttempts: config.retries.attempts,
+                retryDelay: config.retries.delay,
+                retryStrategy: request.RetryStrategies.HTTPOrNetworkError,
+                fullResponse: false
+            })
             /**
              * The initial API request should result in the set of available namespaces
              * Installed on WordPress' rest endpoint. We request this schema to instantiate
